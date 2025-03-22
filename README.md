@@ -1,8 +1,8 @@
-# meta config
-One config to control all configs
+# ze dotfiles
+conf-m managed dotfiles, with templating
 
 ## install
-curl -L https://raw.githubusercontent.com/bucketsize/conf-m/main/install | bash
+curl -L https://raw.githubusercontent.com/bucketsize/dotfiles/main/install | bash
 
 ## dependencies
 - lua5.3
