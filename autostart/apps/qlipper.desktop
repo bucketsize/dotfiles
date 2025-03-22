@@ -1,0 +1,11 @@
+[Desktop Entry]
+Terminal=false
+TryExec=qlipper
+Exec=qlipper
+Icon=qlipper
+Type=Application
+Categories=Qt;Utility;
+StartupNotify=false
+Name=Qlipper
+GenericName=Clipboard Tool
+Comment=Clipboard history tool

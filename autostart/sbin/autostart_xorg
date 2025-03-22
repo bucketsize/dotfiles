@@ -1,0 +1,63 @@
+#!/bin/sh
+
+ictl setup_video
+ictl applywallpaper
+xrdb -merge ~/.Xresources
+xhost +
+xsetroot -cursor_name left_ptr
+setxkbmap us
+
+# dbus for dbus aware apps integration . ie pulseaudio, nautilus, firefox, dunst
+if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+	dbus-launch --sh-syntax --exit-with-session
+	dbus-update-activation-environment --systemd --all
+fi
+
+sleep 1
+
+# needed on VBox for proper display scaling
+if which VBoxClient; then
+	VBoxClient --vmsvga
+	VBoxClient --clipboard
+fi
+
+# sys key binder
+# thd  --triggers ~/.config/triggerhappy/th.conf --deviceglob /dev/input/event*
+case "$XDG_CURRENT_DESKTOP" in
+bspwm)
+	sxhkd -c ~/.config/sxhkd/bspwmrc ~/.config/sxhkd/sharedrc &
+	;;
+*)
+	sxhkd -c ~/.config/sxhkd/winrc ~/.config/sxhkd/sharedrc &
+	;;
+esac
+
+lxpolkit &
+
+case "$XDG_MAJOR_MODE" in
+steam)
+	echo "compositors are bad"
+	steam &
+	sleep 1
+	;;
+*)
+	if which VBoxClient; then
+		compton &
+	else
+		picom &
+	fi
+	;;
+esac
+
+dunst &
+run_once mpd &
+
+tint2 &
+parcellite &
+
+run_once m360 1 >/dev/null &
+sleep 1
+run-lemonbar
+
+notify-send "$XDG_CURRENT_DESKTOP/$XDG_MAJOR_MODE autostart done"
+# xss-lock gtlxklock

@@ -1,0 +1,5 @@
+  840  nmcli dev status
+  841  nmcli radio wifi
+  842  nmcli dev wifi list
+  843  nmcli dev wifi connect Airtel_Tomato
+  844  nmcli dev wifi connect Airtel_Tomato password "********"

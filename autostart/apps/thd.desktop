@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Trigger Happy Daemon
+Comment=Trigger Happy Daemon usermode
+Exec=thd --triggers /home/jb/.config/triggerhappy/th.conf --deviceglob /dev/input/event*
+Type=Application

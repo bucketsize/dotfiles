@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<ThermalConfiguration>
+	<Platform>
+		<Name>Overide CPU default passive</Name>
+		<ProductName>*</ProductName>
+		<Preference>QUIET</Preference>
+		<ThermalZones>
+			<ThermalZone>
+				<Type>cpu</Type>
+				<TripPoints>
+					<TripPoint>
+						<SensorType>x86_pkg_temp</SensorType>
+						<Temperature>70000</Temperature>
+						<type>passive</type>
+						<ControlType>PARALLEL</ControlType>
+						<CoolingDevice>
+							<index>0</index>
+							<type>Fan</type>
+							<influence>50</influence>
+							<SamplingPeriod>8</SamplingPeriod>
+						</CoolingDevice>
+						<CoolingDevice>
+							<index>10</index>
+							<type>intel_pstate</type>
+							<influence>90</influence>
+							<SamplingPeriod>5</SamplingPeriod>
+            </CoolingDevice>
+            <!--
+              pstate should work well enough
+              powerclamp may not be required
+            -->
+            <!--
+						<CoolingDevice>
+							<index>13</index>
+							<type>intel_powerclamp</type>
+							<influence>80</influence>
+							<SamplingPeriod>5</SamplingPeriod>
+            </CoolingDevice>
+            -->
+            <!--
+              cpufreq governor in case where pstate works is bad 
+              - consumes more battery
+              - has little effect
+            -->
+            <!--
+						<CoolingDevice>
+							<index>15</index>
+							<type>cpufreq</type>
+							<influence>70</influence>
+							<SamplingPeriod>5</SamplingPeriod>
+              </CoolingDevice>
+            -->
+						<CoolingDevice>
+							<index>20</index>
+							<type>Processor</type>
+							<influence>60</influence>
+							<SamplingPeriod>5</SamplingPeriod>
+						</CoolingDevice>
+					</TripPoint>
+				</TripPoints>
+			</ThermalZone>
+		</ThermalZones>
+	</Platform>
+</ThermalConfiguration>

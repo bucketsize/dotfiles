@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Frmad Daemon
+Comment=Frmad Daemon usermode
+Exec=frmad.daemon
+Type=Application

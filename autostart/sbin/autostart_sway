@@ -1,0 +1,79 @@
+#!/bin/bash
+
+echo ">>$(date)"
+set -x 
+# status bar
+# waybar
+
+# X11 apps
+xrdb -merge ~/.Xresources
+xhost +
+xsetroot -cursor_name left_ptr
+setxkbmap us
+
+# Auth with polkit-gnome:
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# or
+lxpolkit &
+
+# notifications
+mako &
+
+# dbus 
+systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
+sleep 1 
+
+
+# gtk / gnome
+gnome_schema=org.gnome.desktop.interface
+
+gsettings set $gnome_schema gtk-theme           'Adwaita'
+gsettings set $gnome_schema icon-theme          'Gnome'
+gsettings set $gnome_schema cursor-theme        'Gnome'
+gsettings set $gnome_schema cursor-size         24
+gsettings set $gnome_schema font-name           'DejaVu Sans'
+gsettings set $gnome_schema text-scaling-factor 1
+
+# audio
+#/usr/libexec/pipewire-launcher 
+# or 
+pipewire &
+
+# clipboard
+clipman restore
+wl-paste -t text --watch clipman store &
+
+# keyring
+# gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
+
+# tracker daemon for gnome apps
+# tracker daemon -s
+
+# redshift
+# 12.9716° N, 77.5946° E
+wlsunset -l 12.9 -L 77.5 &
+
+# idle handler 
+# exec swayidle -w \
+#        timeout 180 'playerctl -a pause && swaylock -f' \
+#        timeout 185 'swaymsg "output * dpms off"' \
+#        resume 'swaymsg "output * dpms on"' \
+#        before-sleep 'swaylock -f'
+
+# laptop mode handles sleep resume
+# dpms off and resume failure
+swayidle -w \
+       timeout 180 'playerctl -a pause && swaylock -f' \
+       before-sleep 'swaylock -f' &
+
+# portal
+/usr/libexec/xdg-desktop-portal
+
+# flatpak compat
+/usr/libexec/xdg-desktop-portal-gtk
+/usr/libexec/xdg-desktop-portal-wlr
+/usr/libexec/xdg-desktop-portal-gnome
+  
+echo "$(date)<<"

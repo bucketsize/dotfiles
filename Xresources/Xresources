@@ -1,0 +1,63 @@
+#include "/home/gamer/.config/xresources.d/colors-terminal.sexy-4"
+
+!#define FONTMONO -*-DejaVuSansMono Nerd Font Mono-*-*-*-*-9-*-*-*-*-*-iso8859-*
+
+#define FONT 	 xft:DejaVu:size=11
+#define FONTMONO xft:DejaVuSansMono Nerd Font Mono:size=9
+
+!global Font
+*font:         FONT
+
+!xft -- matchup with fontconfig
+Xft.dpi:       96
+Xft.antialias: true
+Xft.hinting:   true
+Xft.autohint:  false
+Xft.hintstyle: hintslight
+Xft.rgba:      rgb
+Xft.lcdfilter: lcddefault
+
+!emacs
+!emacs.fontBackend: 
+emacs.bitmapIcon: on
+emacs.font: FONTMONO
+emacs.geometry: 90x25
+
+!dunst
+dunst.font: FONT
+
+!xterm
+xterm*faceName: FONTMONO
+XTerm*scaleHeight:		1.0
+XTerm*borderWidth:		0
+XTerm*internalBorder:		10
+XTerm*termName:			xterm-256color
+XTerm*vt100.metaSendsEscape:	true
+XTerm*v100.saveLines:		10240
+XTerm*vt100.scrollBar:		false
+XTerm*vt100.bellIsUrgent:	true
+XTerm*allowBoldFonts:		false
+XTerm*scrollKey:		true
+XTerm*fullscreen:		never
+XTerm*cutToBeginningOfLine:	false
+XTerm*cutNewline:		false
+XTerm*charClass:		33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+XTerm*on2Clicks:		word
+XTerm*on3Clicks:		line
+
+!urxvt
+URxvt.depth: 32
+URxvt*scrollBar: false
+URxvt*font: FONTMONO
+URxvt*buffered: false
+URxvt.lineSpace: 0
+URxvt.letterSpace: 0
+URxvt*borderless: 1
+URxvt*underlineColor: pink
+URxvt*colorUL: pink
+URxvt*iconFile: {term_icon} 
+URxvt.geometry: 96x24
+URxvt*skipBuiltinGlyphs: true
+URxvt.urgentOnBell: false
+URxvt.visualBell: false
+URxvt.iso14755: false

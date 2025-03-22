@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=DBus Daemon
+Comment=DBus daemon
+Exec[1]=dbus-launch --sh-syntax --exit-with-session
+Exec[2]=dbus-update-activation-environment --systemd --all
+Type=Application

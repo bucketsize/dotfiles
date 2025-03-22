@@ -1,0 +1,34 @@
+#!/bin/sh
+
+#
+# x apps
+#
+xrdb -merge ~/.Xresources
+xhost +
+xsetroot -cursor_name left_ptr
+setxkbmap us
+
+#
+#dbus activation
+#
+# dbus for dbus aware apps integration . ie pulseaudio, nautilus, firefox, dunst
+# if now set will take 20s to start
+systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+sleep 1
+
+#
+# vbox
+#
+# needed on VBox for proper display scaling
+VBoxClient --vmsvga
+VBoxClient --clipboard
+
+#
+# others
+#
+lxpolkit &
+pipewire &
+mpd &
+mako &

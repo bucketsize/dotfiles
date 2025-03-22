@@ -1,0 +1,19 @@
+// window placement
+super + Left
+	mxctl.control win_left
+
+super + Right
+	mxctl.control win_right
+
+super + Up
+	mxctl.control win_max
+
+super + Down
+	mxctl.control win_unmax
+
+super + m
+	mxctl.control win_big
+
+super + alt + m
+	mxctl.control win_small
+

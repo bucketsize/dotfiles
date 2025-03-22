@@ -1,0 +1,16 @@
+#!/bin/sh
+
+while true; do
+	dt=$(date "+%a %F %H:%M")
+	if [ -d /sys/class/power_supply/BAT0 ]; then
+		bs=$(cat /sys/class/power_supply/BAT0/status)
+		bc=$(cat /sys/class/power_supply/BAT0/capacity)
+	else
+		bs="AC"
+		bc=""
+	fi
+	echo "$bc $bs | $dt"
+	sleep 1
+done	
+
+

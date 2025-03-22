@@ -1,0 +1,73 @@
+Print
+	ictl scr_cap
+
+control + Print
+	ictl scr_cap_sel
+
+control + alt + bracketright
+	brightnessctl s 2%+
+	#ictl brightness_up
+
+control + alt + bracketleft
+	brightnessctl s 2%-
+	#ictl brightness_down
+
+control + bracketright
+	ictl vol_up
+
+control + bracketleft
+	ictl vol_down
+
+control + backslash
+	ictl vol_mute
+
+alt + h 
+  	parcellite 
+
+#
+# multimedia keys
+#
+@XF86AudioRaiseVolume
+	ictl vol_up
+
+@XF86AudioLowerVolume
+	ictl vol_down
+
+@XF86AudioMute
+	ictl vol_mute
+
+@XF86MonBrightnessUp
+	brightnessctl s 2%+
+	#ictl brightness_up
+
+@XF86MonBrightnessDown
+	brightnessctl s 2%-
+	#ictl brightness_down
+
+# 
+# menu shortcuts
+#
+super + d
+	ictl dmenu_run
+
+super + w
+	ictl dmenu_window
+
+super + q
+	ictl dmenu_exit
+
+control + alt + Delete
+	ictl dmenu_exit
+
+control + alt + l
+	ictl scr_lock
+
+control + alt + 2
+	ictl dmenu_video
+
+control + alt + 3
+	ictl dmenu_audio_sink
+
+control + alt + 9
+	ictl dmenu_misc
+

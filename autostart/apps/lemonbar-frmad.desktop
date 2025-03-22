@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Lemonbar using Frmad Daemon
+Comment=Lemonbar using Frmad Daemon usermode
+Exec=tail -f /tmp/frmad.lemonbar.out \| lemonbar
+Type=Application

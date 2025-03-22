@@ -1,0 +1,11 @@
+anchor=top-right
+font={font} {font_size}
+background-color=#262626
+height=150
+border-size=4
+border-color=#ff676e
+default-timeout=5000
+margin=0,11,11,0
+padding=9,9,9,9
+
+

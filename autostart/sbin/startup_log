@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "$(date) - INFO - startup" >>/var/tmp/autostart_startup.log

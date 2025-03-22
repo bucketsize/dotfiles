@@ -1,0 +1,36 @@
+   return {
+	  app_dirs = {
+			"/usr/local/bin",
+			"/usr/share/applications"
+		},
+	  menu_sel = "fzf",
+	  ctrl_bin = "~/.luarocks/bin/mxctl.control",
+	  pop_term = {xorg="alacritty", wayland="alacritty"},
+
+	  displays = {
+		 {
+			name = 'XWAYLAND0',
+			mode = {x=1280,y=720},
+			pos = {0,0},
+			extra_opts = '--primary --set underscan off'
+		 },
+		 {
+			name = 'HDMI-1',
+			mode = {x=1280,y=720},
+			pos = {0,0},
+			extra_opts = '--primary  --set underscan off'
+		 },
+		 {
+			name = 'HDMI-A-0',
+			mode = {x=1366,y=768},
+			pos = {0,0},
+			extra_opts = '--primary  --set underscan off'
+		 },
+		 -- {
+			-- name = 'HDMI-A-1',
+			-- mode = {x=1280, y=720},
+			-- pos = {1,0},
+			-- extra_opts = '--set underscan on --set "underscan hborder" 48 --set "underscan vborder" 24'
+		 -- }
+	  }
+   }

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=VBox Guest Daemon
+Comment=VBox Guest Daemon usermode
+Exec[1]=VBoxClient --vmsvga 
+Exec[2]=VBoxClient --clipboard
+Type=Application

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=URxvt Daemon
+Comment=URXvt Daemon usermode
+Exec=urxvtd -q -o -f
+Type=Application

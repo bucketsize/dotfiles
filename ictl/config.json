@@ -1,0 +1,70 @@
+{
+  "app_dirs": [
+    "/usr/local/bin",
+    "/usr/share/applications",
+    "/snap/bin",
+    "~/.local/share/applications",
+    "~/.local/bin"
+  ],
+  "menu_sel": ["fzf"],
+  "pop_term": {"xorg":"alacritty", "wayland":"alacritty"},
+  "lux_step": 2,
+
+  "wallpapermode": "fixed",
+  "wallpaperscache": ".wlprs",
+  "wallpaperfixd": "Pictures/wallpaper-1.jpg",
+  "wallpapersdir": "Pictures",
+
+  "__info":[
+    "why set 1280x720",
+    "This is the most optimal resolution for gaming on ryzen 3 APU"
+  ],
+  "displays": [
+    {
+      "__name:": "vbox",
+      "name": "Virtual-0",
+      "mode": {"x":1280,"y":720},
+      "pos": [0,0],
+      "extra_opts": "--primary --set underscan off"
+    },
+    {
+      "name": "DisplayPort-0",
+      "mode": {"x":1280,"y":720},
+      "pos": [0,0],
+      "extra_opts": "--primary --set underscan off"
+    },
+    {
+      "name": "eDP-1",
+      "mode": {"x":1280, "y":720},
+      "pos": [0,0],
+      "extra_opts": "--primary --set underscan off"
+    },
+    {
+      "name": "eDP1",
+      "mode": {"x":1280, "y":720},
+      "pos": [0,0],
+      "extra_opts": "--primary --set underscan off"
+    },
+    {
+      "__name:": "pi4",
+      "name": "HDMI-A-0",
+      "mode": {"x":1280, "y":720},
+      "pos": [0,0],
+      "extra_opts": "--primary --set underscan off"
+    },
+    {
+      "__name:": "pi4 display2",
+      "name": "HDMI-A-1",
+      "mode": {"x":1280, "y":720},
+      "pos": [1,0],
+      "extra_opts": "--set underscan on --set \"underscan hborder\" 48 --set \"underscan vborder\" 24"
+    },
+    {
+      "__name:": "ryzen3 PC",
+      "name": "HDMI-1",
+      "mode": {"x":1280, "y":720},
+      "pos": [1,0],
+      "extra_opts": "--primary --set underscan off"
+    }
+  ]
+}

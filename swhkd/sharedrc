@@ -1,0 +1,66 @@
+Print
+	grim
+
+control + Print
+	slurp
+
+control + alt + bracketright
+	brightnessctl set +2%
+
+control + alt + bracketleft
+	brightnessctl set 2%-
+
+control + bracketright
+	mxctl.control vol_up
+
+control + bracketleft
+	mxctl.control vol_down
+
+control + backslash
+	mxctl.control vol_mute
+
+#
+# multimedia keys
+#
+@XF86AudioRaiseVolume
+	mxctl.control vol_up
+
+@XF86AudioLowerVolume
+	mxctl.control vol_down
+
+@XF86AudioMute
+	mxctl.control vol_mute
+
+@XF86MonBrightnessUp
+	brightnessctl set 2%-
+
+@XF86MonBrightnessDown
+	brightnessctl set +2%
+
+# 
+# menu shortcuts
+#
+super + d
+	mxctl.control dmenu_run
+
+super + w
+	mxctl.control dmenu_select_window
+
+super + q
+	mxctl.control dmenu_exit
+
+control + alt + 2
+	mxctl.control dmenu_setup_video
+
+control + alt + 3
+	mxctl.control dmenu_select_pa_sinks
+
+control + alt + 9
+	mxctl.control dmenu_misc
+
+control + alt + Delete
+	mxctl.control dmenu_exit
+
+control + alt + l
+	mxctl.control scr_lock
+

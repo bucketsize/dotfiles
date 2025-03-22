@@ -1,0 +1,169 @@
+# system
+## core
+linux-firmware
+intel-ucode
+amd-ucode
+inotify-tools
+libnotify
+pciutils
+coreutils
+usbutils
+usb-modeswitch
+ntfs3g
+ntfsprogs
+man
+fakeroot
+sudo
+openssh
+openssl
+read-edid
+xdg-desktop-portal-wlr
+ethtool
+lshw
+pam
+
+
+## power saving
+cpupower
+upower
+thermald
+tlp
+acpi
+powertop
+smartmontools
+
+## network
+connman 
+iwd
+avahi                
+
+## audio
+alsa-tools
+alsa-utils
+pipewire
+pipewire-pulse
+pipewire-audio 
+pipewire-v4l2                            
+pipewire-jack
+pipewire-alsa
+wireplumber
+
+# cli apps
+brightnessctl 
+wget
+curl
+pamixer
+ripgrep
+fd 
+redshift
+gammastep
+
+# term apps 
+tmux
+ranger
+htop
+iotop
+
+# themes
+oxygen-icons
+
+# apps
+alacritty
+xarchiver
+firefox
+bluez
+blueman
+connman-gtk
+wpa_supplicant_gui
+w3m
+fzf
+zip
+unzip
+connman-gtk #aur
+steam #aur
+alacritty
+rxvt-unicode
+pcmanfm
+gvfs
+gvfs-mtp
+gvfs-afc
+
+# mediaplayer
+mpd
+mpv
+imagemagick 
+
+# dev
+neovim 
+git
+gcc
+make
+cmake
+gnumake 
+openssl
+gnutls 
+ocaml
+opam 
+cargo
+python3
+lua
+luarocks
+mk-configure
+autogen
+pkg-config
+fakeroot
+make   
+crypto++
+m4 
+pixman1
+
+# wayland 
+greetd 
+greetd-gtkgreet | greetd-gtkgreet-git | greetd-tuigreet
+gtklock
+gtklock-userinfo-module gtklock-powerbar-module gtklock-playerctl-module
+cage 
+foot
+bemenu
+clipman
+clipmenu wl-clipboard
+drm_info
+grim
+slurp
+imv 
+kanshi 
+wdisplays #aur
+wev #aur
+wlsunset
+wtype
+swhkd-bin #aur
+wmctrl
+wev
+wbg
+wayland-client
+wayland-utils
+
+# X / openbox 
+openbox obconf2 feh
+arandr
+
+# weston
+weston
+
+# wayland qtile
+qtile
+python-pywayland
+python-pywlroots
+python-mypy
+python-pip
+python-psutil
+python-iwlib
+python-dbus-next
+
+# nvidia
+nvidia
+opencl-nvidia
+nvidia-prime
+envycontrol
+mesa-utils 
+
