@@ -287,51 +287,15 @@ hide_edge_borders smart
 # window behaviour
 #
 
-## window
-# app_id < swaymsg -t get_tree | jq '.' | grep "app_id" 
-# class  < xprop
-for_window [class = "Popeye"] floating enable
-for_window [app_id = "Popeye"] floating enable
-for_window [window_role = "pop-up"] floating enable
-for_window [window_role = "bubble"] floating enable
-for_window [window_role = "dialog"] floating enable
-for_window [window_type = "dialog"] floating enable
-for_window [window_role = "task_dialog"] floating enable
-for_window [window_type = "menu"] floating enable
-for_window [app_id = "floating"] floating enable
-for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
-for_window [class = "(?i)pinentry"] floating enable
-for_window [title = "About Mozilla Firefox"] floating enable
-for_window [window_role = "About"] floating enable
+for_window [app_id="firefox"] move to workspace W, focus
 for_window [title = "Firefox - Sharing Indicator"] floating enable
 for_window [title = "Firefox — Sharing Indicator"] floating enable
 for_window [title = "LibreWolf — Sharing Indicator"] floating enable
 for_window [title = "LibreWolf - Sharing Indicator"] floating enable
 for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable
-for_window [app_id = "pavucontrol"] floating enable
-for_window [title = "Page Info - .*"] floating enable
-for_window [title = "^Open File$"] floating enable
-for_window [window_role = "GtkFileChooserDialog"] resize set 590 340
-for_window [window_role = "GtkFiileChooserDialog"] move position center
-for_window [title = "mpvfloat"] floating enable
-for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
-for_window [title="nmtui"] floating enable
-for_window [title="Save File"] floating enable
-for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
-for_window [app_id="floating_shell"] floating enable, border pixel 1, sticky enable
-for_window [class = "Bluetooth-sendto" instance = "bluetooth-sendto"] floating enable
-for_window [window_role = "Preferences"] floating enable
-for_window [title = "Picture in picture"] floating enable, sticky enable
-for_window [app_id = "flameshot"] floating enable
-for_window [title = "Firefox - Choose User Profile" ] floating enable
-for_window [app_id = "wdisplays"] resize set width 1150px height 480px
-for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
-for_window [app_id="(?i)(?:blueman-manager|azote|gnome-disks|nwg-shell-config)"] floating enable
-for_window [app_id="(?i)(?:pavucontrol|nm-connection-editor|gsimplecal|galculator)"] floating enable
-#for_window [app_id="(?i)(?:firefox|chromium)"] border none
-for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
+for_window [title = "About Mozilla Firefox"] floating enable
 
-for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [app_id="Steam"] move to workspace Steam, focus
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
 for_window [class="^Steam$" title="^Settings$"] floating enable
@@ -341,6 +305,46 @@ for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
+for_window [title = "Firefox - Choose User Profile" ] floating enable
+
+## window
+# app_id < swaymsg -t get_tree | jq '.' | grep "app_id" 
+# class  < xprop
+for_window [class = "Popeye"] floating enable
+for_window [app_id = "Popeye"] floating enable
+
+for_window [window_role = "pop-up"] floating enable
+for_window [window_role = "bubble"] floating enable
+for_window [window_role = "dialog"] floating enable
+for_window [window_type = "dialog"] floating enable
+for_window [window_role = "task_dialog"] floating enable
+for_window [window_type = "menu"] floating enable
+for_window [window_role = "About"] floating enable
+for_window [window_role = "GtkFileChooserDialog"] resize set 590 340
+for_window [window_role = "GtkFileChooserDialog"] move position center
+for_window [window_role = "Preferences"] floating enable
+
+for_window [app_id = "floating"] floating enable
+for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+for_window [class = "(?i)pinentry"] floating enable
+for_window [app_id = "pavucontrol"] floating enable
+for_window [title = "Page Info - .*"] floating enable
+for_window [title = "^Open File$"] floating enable
+for_window [title = "mpvfloat"] floating enable
+for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [title="nmtui"] floating enable
+for_window [title="Save File"] floating enable
+for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
+for_window [app_id="floating_shell"] floating enable, border pixel 1, sticky enable
+for_window [class = "Bluetooth-sendto" instance = "bluetooth-sendto"] floating enable
+for_window [title = "Picture in picture"] floating enable, sticky enable
+for_window [app_id = "flameshot"] floating enable
+for_window [app_id = "wdisplays"] resize set width 1150px height 480px
+for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
+for_window [app_id="(?i)(?:blueman-manager|azote|gnome-disks|nwg-shell-config)"] floating enable
+for_window [app_id="(?i)(?:pavucontrol|nm-connection-editor|gsimplecal|galculator)"] floating enable
+for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
+
 
 # Scratchpad terminal
 for_window [title="(?i)$criteria"] floating enable, move absolute position 1500px 300px, resize set 1200px 700px, move to scratchpad, mark $criteria
