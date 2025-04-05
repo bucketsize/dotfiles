@@ -50,14 +50,14 @@ steam)
 esac
 
 dunst &
-run_once mpd &
+#run_once mpd &
 
 tint2 &
 parcellite &
 
 run_once m360 1 >/dev/null &
 sleep 1
-run-lemonbar
+#run-lemonbar
 
 notify-send "$XDG_CURRENT_DESKTOP/$XDG_MAJOR_MODE autostart done"
 # xss-lock gtlxklock
