@@ -1106,7 +1106,7 @@ require('lazy').setup({
 			{ '<leader>hl', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
 		},
 	},
-	{ 'sindrets/diffview.vim' },
+	-- { 'sindrets/diffview.vim' },
 	{
 		'nvim-pack/nvim-spectre',
 		keys = {
@@ -1187,6 +1187,29 @@ require('lazy').setup({
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {},
+	},
+	{
+		'yourusername/avante.nvim', -- Replace with the actual repository URL
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		opts = {
+			api_key = 'your_qwen_api_key', -- Replace with your Qwen API key
+			model = 'qwen-2.5-coder', -- Specify the Qwen-2.5 Coder model
+			endpoint = 'https://api.qwen.com/v1/completions', -- Replace with the correct Qwen API endpoint
+			commands = {
+				explain_code = 'Explain the following code snippet step-by-step:\n',
+				generate_test = 'Write a comprehensive unit test for the following function:\n',
+				refactor_code = 'Refactor the following code to improve readability and performance:\n',
+				debug_code = 'Identify potential bugs or issues in the following code:\n',
+			},
+			debug = false, -- Set to true for debugging
+		},
+		keys = {
+			{ '<leader>aa', '<cmd>AvanteAsk<CR>', desc = 'Ask AI (Avante)' },
+			{ '<leader>ae', ":'<,'>AvanteExplain<CR>", mode = 'v', desc = 'Explain Selected Code' },
+			{ '<leader>at', ":'<,'>AvanteTest<CR>", mode = 'v', desc = 'Generate Unit Test' },
+			{ '<leader>ar', ":'<,'>AvanteRefactor<CR>", mode = 'v', desc = 'Refactor Code' },
+			{ '<leader>ad', ":'<,'>AvanteDebug<CR>", mode = 'v', desc = 'Debug Code' },
+		},
 	},
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
