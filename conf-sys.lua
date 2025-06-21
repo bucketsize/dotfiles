@@ -3,7 +3,6 @@ require("luarocks.loader")
 
 local Sh = require("minilib.shell")
 local M = require("minilib.monad")
-local T = require("task")
 local Home = os.getenv("HOME")
 
 return {
