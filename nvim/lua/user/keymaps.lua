@@ -10,14 +10,16 @@ function M.setup()
   map('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search' })
   map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Diag list' })
 
+  -- Windows
   map('n', '<C-h>', '<C-w><C-h>', { desc = 'Win left' })
   map('n', '<C-l>', '<C-w><C-l>', { desc = 'Win right' })
   map('n', '<C-j>', '<C-w><C-j>', { desc = 'Win down' })
   map('n', '<C-k>', '<C-w><C-k>', { desc = 'Win up' })
 
+  -- Terminal
   map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit term' })
 
-  -- Search
+  -- Telescope (Search)
   map('n', '<C-p>', function()
     require('telescope.builtin').find_files()
   end, { desc = 'Find files' })
@@ -38,7 +40,7 @@ function M.setup()
     require('telescope.builtin').help_tags()
   end, { desc = 'Help tags' })
 
-  -- Explorer
+  -- File Explorer
   map('n', '\\', '<cmd>Neotree toggle<CR>', { desc = 'File explorer' })
 
   -- Replace
@@ -73,6 +75,16 @@ function M.setup()
   map('n', '<leader>cc', function()
     require("codex").toggle()
   end, { desc = 'Toggle Codex' })
+
+  -- WhichKey Groups
+  vim.keymap.set('n', '<leader>', '', { desc = 'Leader' })
+  vim.keymap.set('n', '<leader>g', '', { desc = 'Git' })
+  vim.keymap.set('n', '<leader>s', '', { desc = 'Search' })
+  vim.keymap.set('n', '<leader>f', '', { desc = 'Format' })
+  vim.keymap.set('n', '<leader>x', '', { desc = 'Trouble' })
+  vim.keymap.set('n', '<leader>w', '', { desc = 'Workspace' })
+  vim.keymap.set('n', '<leader>l', '', { desc = 'LSP' })
+  vim.keymap.set('n', '<leader>j', '', { desc = 'Java' })
 end
 
 

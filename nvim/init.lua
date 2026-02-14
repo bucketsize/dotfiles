@@ -73,6 +73,26 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Enable autoread
+vim.o.autoread = true
+
+-- Auto-check for file changes
+vim.api.nvim_create_autocmd({"FocusGained", "BufEnter", "CursorHold", "CursorHoldI"}, {
+    callback = function()
+        if vim.fn.mode() ~= 'c' then
+            vim.cmd("checktime")
+        end
+    end
+})
+
+-- Notify when file is reloaded
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+    callback = function()
+        vim.api.nvim_echo({{"File changed on disk. Buffer reloaded.", "WarningMsg"}}, false, {})
+    end
+})
+
+
 -- =========================================================
 -- Keymaps (Central Module)
 -- =========================================================
@@ -182,7 +202,7 @@ require('lazy').setup({
 
 {
   'nvim-telescope/telescope.nvim',
-  branch = '0.1.x',
+  branch = '0.22.x',
   cmd = "Telescope",
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -196,13 +216,40 @@ require('lazy').setup({
   },
   config = function()
     local telescope = require('telescope')
+
+    -- Set up telescope with proper default preview configuration
     telescope.setup({
+      defaults = {
+        preview = {
+          check_filetype = true,
+          filetype_hook = function(filepath, bufnr, opts)
+            vim.api.nvim_win_set_buf(opts.winid, bufnr)
+          end,
+        },
+        present_line = { enabled = true },
+        layout_config = {
+          horizontal = {
+            preview_width = 0.5,
+          },
+        },
+      },
+      pickers = {
+        find_files = {
+          theme = "dropdown",
+          hidden = true,
+        },
+        buffers = {
+          theme = "dropdown",
+          preview_width = 0.6,
+        },
+      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),
         },
       },
     })
+
     pcall(telescope.load_extension, 'fzf')
     pcall(telescope.load_extension, 'ui-select')
   end,
@@ -299,9 +346,16 @@ require('lazy').setup({
     require("toggleterm").setup({
       open_mapping = [[<C-t>]],
       start_in_insert = true,
+      insert_mappings = true,
+      terminal_mappings = true,
       persist_size = true,
+      close_on_exit = true,
+      shade_terminals = true,
       direction = "float",
-      float_opts = { border = "rounded" },
+      float_opts = {
+        border = "rounded",
+      },
+
     })
 
     local Terminal = require("toggleterm.terminal").Terminal
@@ -311,6 +365,33 @@ require('lazy').setup({
       right_term = Terminal:new({ direction = "vertical", size = 80, hidden = true }),
     }
   end,
+
+  -- FIXME: overriding keymaps
+  keys = {
+    -- Floating terminal
+    {
+      "<leader>tf",
+      function()
+        require("user.toggleterm").float_term:toggle()
+      end,
+      desc = "Toggle Floating Terminal",
+    },
+
+    -- Right vertical terminal
+    {
+      "<leader>tr",
+      function()
+        require("user.toggleterm").right_term:toggle()
+      end,
+      desc = "Toggle Vertical Terminal (Right)",
+    },
+    {
+      "<Esc>",
+      [[<C-\><C-n>]],
+      mode = "t",
+      desc = "Exit Terminal Mode",
+    },
+  },
 },
 
 -- =========================================================
