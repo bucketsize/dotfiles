@@ -58,6 +58,13 @@ function M.setup()
   map('n', '<leader>hf', '<cmd>Git<CR>', { desc = 'Git status' })
   map('n', '<leader>hl', '<cmd>LazyGit<CR>', { desc = 'LazyGit UI' })
 
+  -- Diffview
+  map('n', '<leader>gd', "<cmd>DiffviewOpen<CR>", { desc = 'Diffview: Open' })
+  map('n', '<leader>gD', "<cmd>DiffviewOpen HEAD<CR>", { desc = 'Diffview: Open HEAD' })
+  map('n', '<leader>gc', "<cmd>DiffviewFileHistory %<CR>", { desc = 'Diffview: File history' })
+  map('n', '<leader>gC', "<cmd>DiffviewFileHistory<CR>", { desc = 'Diffview: Full history' })
+  map('n', '<leader>gM', "<cmd>DiffviewClose<CR>", { desc = 'Diffview: Close' })
+
   -- Terminal
   map('n', '<leader>tf', function()
     require("user.toggleterm").float_term:toggle()

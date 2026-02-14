@@ -333,7 +333,81 @@ require('lazy').setup({
 { 'lewis6991/gitsigns.nvim', event = 'VimEnter', opts = {} },
 { 'tpope/vim-fugitive', cmd = 'Git' },
 { 'airblade/vim-gitgutter' },
+{
+  'sindrets/diffview.nvim',
+  cmd = 'Diffview',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  config = function()
+    local diffview = require('diffview')
+    local api = require('telescope.actions')
+
+    diffview.setup({
+      diff_binaries = false,
+      use_icons = true,
+      show_help_hints = true,
+      signs = {
+        add = { text = "+" },
+        change = { text = "~" },
+        delete = { text = "-" },
+      },
+      file_panel = {
+        listing_style = 'tree',
+        tree_options = {
+          flatten_dirs = true,
+          icons = {
+            folder_blank = ' ',
+            folder_open = ' ',
+            folder_empty = ' ',
+          },
+        },
+        win_config = {
+          position = 'left',
+          width = 35,
+          height = 1,
+          border = 'rounded',
+          winhighlight = { Cursor = 'CursorLine', Normal = 'Normal', EndOfBuffer = 'Special' },
+        },
+      },
+      file_history_panel = {
+        log_options = {
+          git = {
+            diff_merges = 'combined',
+          },
+        },
+        win_config = {
+          position = 'bottom',
+          height = 16,
+          border = 'rounded',
+          winhighlight = { Cursor = 'CursorLine', Normal = 'Normal', EndOfBuffer = 'Special' },
+        },
+        default_config = {
+          mappings: {
+            close = '<C-q>',
+            option = '<C-o>',
+          },
+        },
+      },
+      default_args = {
+        DiffviewOpen = {},
+        DiffviewClose = {},
+        DiffviewFileHistory = {},
+      },
+    })
+
+    -- Telescope integration
+    local view = require('diffview.view')
+    view.EVENTS:subscribe(view.Events.FileHistoryClosed, function()
+      if pcall(require, 'telescope.builtin') ~= nil then
+        pcall(require('telescope.builtin').git_file_history, {})
+      end
+    end)
+  end,
+},
 { 'kdheepak/lazygit.nvim', cmd = 'LazyGit', dependencies = { 'nvim-lua/plenary.nvim' } },
+{
+    'lanej/hotreload.nvim',
+    opts = {}  -- Uses fs_event watchers by default
+},
 
 -- =========================================================
 -- === Terminal
