@@ -255,13 +255,30 @@ require('lazy').setup({
 {
   'stevearc/conform.nvim',
   event = 'BufWritePre',
+
   opts = {
     notify_on_error = false,
+
     formatters_by_ft = {
       lua = { 'stylua' },
+      java = { 'google_java_format' },
+      rust = { 'rustfmt' },
+    },
+
+    formatters = {
+      google_java_format = {
+        command = "java",
+        args = {
+          "-jar",
+          "/usr/local/bin/google-java-format.jar",
+          "--stdin",
+        },
+        stdin = true,
+      },
     },
   },
 },
+
 
 -- =========================================================
 -- === Git & VCS
@@ -345,6 +362,7 @@ require('lazy').setup({
       ensure_installed = vim.tbl_keys(servers),
     }
 
+    local keymaps = require("user.keymaps")
     require('mason-lspconfig').setup {
       ensure_installed = vim.tbl_keys(servers),
       handlers = {
@@ -352,6 +370,7 @@ require('lazy').setup({
           if name == 'jdtls' then return end
           local cfg = servers[name] or {}
           cfg.capabilities = capabilities
+          cfg.on_attach = keymaps.lsp_on_attach
           require('lspconfig')[name].setup(cfg)
         end,
       },
@@ -414,10 +433,15 @@ require('lazy').setup({
     local root_dir = require('jdtls.setup').find_root({
       '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle'
     })
+
+    local keymaps = require("user.keymaps")
+
     jdtls.start_or_attach({
       cmd = { 'jdtls' },
       root_dir = root_dir,
+      on_attach = keymaps.jdtls_on_attach,
     })
+
   end,
 },
 
