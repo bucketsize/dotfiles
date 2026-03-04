@@ -380,12 +380,6 @@ require('lazy').setup({
           border = 'rounded',
           winhighlight = { Cursor = 'CursorLine', Normal = 'Normal', EndOfBuffer = 'Special' },
         },
-        default_config = {
-          mappings: {
-            close = '<C-q>',
-            option = '<C-o>',
-          },
-        },
       },
       default_args = {
         DiffviewOpen = {},
