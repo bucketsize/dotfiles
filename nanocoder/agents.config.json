@@ -1,0 +1,25 @@
+{
+  "nanocoder": {
+    "providers": [
+      {
+        "name": "lm-studio",
+        "baseUrl": "http://localhost:11434/v1",
+        "models": ["mistralai/ministral-3-3b", "mistralai/ministral-3-8b"],
+        "requestTimeout": -1,
+        "socketTimeout": -1,
+        "connectionPool": {
+          "idleTimeout": 30000,
+          "cumulativeMaxIdleTimeout": 3600000
+        }
+      },
+      {
+        "name": "novita-ai",
+        "baseUrl": "https://api.novita.ai/openai",
+        "apiKey": "${NOVITA_API_KEY}",
+        "models": ["zai-org/glm-4.7-flash", "openai/gpt-oss-120b"]
+      }
+    ],
+    "defaultProvider": "novita-ai"
+  }
+}
+
