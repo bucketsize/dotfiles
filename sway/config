@@ -24,13 +24,8 @@ set $ws8 N
 #
 # display
 #
-output eDP-1    mode --custom 1280x720@60Hz 
-output eDP-2    mode --custom 1280x720@60Hz 
-output HDMI-A-0 mode --custom 1280x720@60Hz  
-output HDMI-A-1 mode --custom 1280x720@60Hz  
-output HDMI-A-2 mode --custom 1280x720@60Hz  
-output * mode --custom 1280x720@60Hz  
-output "*" background ~/.wlprs/wallpaper stretch
+output * mode --custom 1280x720@60Hz
+output * background ~/.wlprs/wallpaper stretch
 
 #
 # power / events
@@ -132,28 +127,14 @@ bindsym $mod+h splith
 bindsym $mod+v splitv
 
 ## Modify // Move window to workspace 1-10 // <><Shift> 0..9 ##
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
-
-## Modify // Move window to workspace 1-10; move to workspace // <><Alt> 0..9 ##
-bindsym $mod+$alt+1 move container to workspace $ws1; workspace $ws1
-bindsym $mod+$alt+2 move container to workspace $ws2; workspace $ws2
-bindsym $mod+$alt+3 move container to workspace $ws3; workspace $ws3
-bindsym $mod+$alt+4 move container to workspace $ws4; workspace $ws4
-bindsym $mod+$alt+5 move container to workspace $ws5; workspace $ws5
-bindsym $mod+$alt+6 move container to workspace $ws6; workspace $ws6
-bindsym $mod+$alt+7 move container to workspace $ws7; workspace $ws7
-bindsym $mod+$alt+8 move container to workspace $ws8; workspace $ws8
-bindsym $mod+$alt+9 move container to workspace $ws9; workspace $ws9
-bindsym $mod+$alt+0 move container to workspace $ws10; workspace $ws10
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Autotiling automatically sets splith and splitv.
 # Because of this the layout only changes for the selected window and not for all windows if no layout is set, which is default in sway.
@@ -287,15 +268,14 @@ hide_edge_borders smart
 # window behaviour
 #
 
-for_window [app_id="firefox"] move to workspace W, focus
 for_window [title = "Firefox - Sharing Indicator"] floating enable
 for_window [title = "Firefox — Sharing Indicator"] floating enable
 for_window [title = "LibreWolf — Sharing Indicator"] floating enable
 for_window [title = "LibreWolf - Sharing Indicator"] floating enable
 for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable
 for_window [title = "About Mozilla Firefox"] floating enable
+for_window [title = "Firefox - Choose User Profile" ] floating enable
 
-for_window [app_id="Steam"] move to workspace Steam, focus
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
 for_window [class="^Steam$" title="^Settings$"] floating enable
@@ -305,7 +285,6 @@ for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
-for_window [title = "Firefox - Choose User Profile" ] floating enable
 
 ## window
 # app_id < swaymsg -t get_tree | jq '.' | grep "app_id" 
@@ -361,15 +340,43 @@ for_window [app_id="waybar" floating] {
 # See https://github.com/swaywm/sway/issues/4992
 for_window [title=".*"] title_format %title゜
 
-# App Icons
-for_window [app_id="(?i)firefox"] title_format "FF - %title゜"
-for_window [app_id="Alacritty"] title_format   "Al - %title゜"
-for_window [app_id="thunderbird"] title_format "Th - %title゜"
-for_window [app_id="chromium"] title_format "Cr - %title゜"
-for_window [app_id="code-oss"] title_format "Co - %title゜"
+# Apps to ws
 
-# Tag xwayland windows with [X]
-for_window [shell="xwayland"] title_format "[X] %title゜"
+### 🌐 Browsers → WS2
+for_window [app_id="firefox"]        move container to workspace $ws2, workspace $ws2
+for_window [app_id="chromium"]       move container to workspace $ws2, workspace $ws2
+for_window [app_id="google-chrome"]  move container to workspace $ws2, workspace $ws2
+
+### 💻 VS Code → WS3
+for_window [app_id="code"]           move container to workspace $ws3, workspace $ws3
+
+### 🎮 Steam → WS4
+for_window [app_id="steam"]          move container to workspace $ws4, workspace $ws4
+
+### 🖥️ Terminals → WS1
+for_window [app_id="foot"]           move container to workspace $ws1, workspace $ws1
+for_window [app_id="Alacritty"]      move container to workspace $ws1, workspace $ws1
+
+### 🌐 Browsers → WS2
+for_window [class="Firefox"]         move container to workspace $ws2, workspace $ws2
+for_window [class="Chromium"]        move container to workspace $ws2, workspace $ws2
+for_window [class="Google-chrome"]   move container to workspace $ws2, workspace $ws2
+for_window [class="google-chrome"]   move container to workspace $ws2, workspace $ws2
+
+### 💻 VS Code → WS3
+for_window [class="Code"]            move container to workspace $ws3, workspace $ws3
+
+### 🎮 Steam + Proton/Wine → WS4
+for_window [class="Steam"]           move container to workspace $ws4, workspace $ws4
+for_window [class="steam_app_.*"]    move container to workspace $ws4, workspace $ws4
+for_window [class="Steam App .*"]    move container to workspace $ws4, workspace $ws4
+for_window [class="wine"]            move container to workspace $ws4, workspace $ws4
+for_window [class="Wine"]            move container to workspace $ws4, workspace $ws4
+
+### 🖥️ Terminals → WS1
+for_window [class="Alacritty"]       move container to workspace $ws1, workspace $ws1
+for_window [class="foot"]            move container to workspace $ws1, workspace $ws1
+
 
 set $criteria swayTerm
 
