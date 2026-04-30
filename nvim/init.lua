@@ -330,7 +330,47 @@ require('lazy').setup({
 -- =========================================================
 -- === Git & VCS
 -- =========================================================
-{ 'lewis6991/gitsigns.nvim', event = 'VimEnter', opts = {} },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufReadPre",
+    opts = {
+      signs = {
+        add          = { text = "│" },
+        change       = { text = "│" },
+        delete       = { text = "_" },
+        topdelete    = { text = "‾" },
+        changedelete = { text = "~" },
+      },
+
+      -- Inline blame
+      current_line_blame = true,
+      current_line_blame_opts = {
+        delay = 300,
+        virt_text_pos = 'eol', -- end of line
+      },
+
+      -- Useful extras
+      preview_config = {
+        border = "rounded",
+      },
+    },
+
+    config = function(_, opts)
+      require("gitsigns").setup(opts)
+    end,
+  },
+
+  -- {
+  --   "f-person/git-blame.nvim",
+  --   event = "BufRead",
+  --   opts = {
+  --     enabled = true,
+  --     message_template = " <author> • <date> • <summary>",
+  --     date_format = "%Y-%m-%d",
+  --     virtual_text_column = 1,
+  --   },
+  -- },
 { 'tpope/vim-fugitive', cmd = 'Git' },
 { 'airblade/vim-gitgutter' },
 {

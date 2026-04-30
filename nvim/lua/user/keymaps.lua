@@ -58,6 +58,13 @@ function M.setup()
   map('n', '<leader>hf', '<cmd>Git<CR>', { desc = 'Git status' })
   map('n', '<leader>hl', '<cmd>LazyGit<CR>', { desc = 'LazyGit UI' })
 
+  --map("n", "<leader>tb", require("gitsigns").toggle_current_line_blame, { desc = 'Git toggle blame' })
+  --map("n", "<leader>gh", require("gitsigns").preview_hunk, { desc = 'Git hunk' })
+  --map("n", "<leader>gb", require("gitsigns").blame_line, { desc = 'Git blame' })
+  --map("n", "]h", require("gitsigns").next_hunk, { desc = 'Git next hunk' })
+  --map("n", "[h", require("gitsigns").prev_hunk, { desc = 'Git prev hunk' })
+
+
   -- Diffview
   map('n', '<leader>gd', "<cmd>DiffviewOpen<CR>", { desc = 'Diffview: Open' })
   map('n', '<leader>gD', "<cmd>DiffviewOpen HEAD<CR>", { desc = 'Diffview: Open HEAD' })

@@ -381,22 +381,23 @@ for_window [class="foot"]            move container to workspace $ws1, workspace
 set $criteria swayTerm
 
 #bar 
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command ~/.config/sway/status
-
-    colors {
-        statusline #d8dee8
-        background #2f343f
-        inactive_workspace #2f343f #2f343f #d8dee8
-    }
-}
+# bar {
+#     position top
+#
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     status_command ~/.config/sway/status
+#
+#     colors {
+#         statusline #d8dee8
+#         background #2f343f
+#         inactive_workspace #2f343f #2f343f #d8dee8
+#     }
+# }
 
 
 #
 # autostart
-# 
+#
+exec ~/.config/autostart/sbin/autostart_sway
 

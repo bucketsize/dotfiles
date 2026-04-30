@@ -9,7 +9,7 @@ return {
 		configure = function()
 			Sh.util.ln("$(pwd)/sway", "~/.config/sway")
 		end,
-		depends = { "sway|1", "swaybg|1", "swayidle", "swaylock" },
+		depends = { "sway|1", "swaybg|1", "swayidle|1", "swaylock|1" },
 		installer = function() end,
 	},
 	{
@@ -31,7 +31,7 @@ return {
 	{
 		path = "wayland-tools",
 		configure = function() end,
-		depends = { "wlr-randr|1", "wlsunset", "wl-clipboard", "kanshi", "grim|1", "slurp" },
+		depends = { "wlr-randr|1", "wlsunset|1", "wl-clipboard|1", "kanshi", "grim|1", "slurp" },
 		installer = function() end,
 	},
 	{

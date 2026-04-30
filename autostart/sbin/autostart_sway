@@ -2,8 +2,6 @@
 
 echo ">>$(date)"
 set -x 
-# status bar
-# waybar
 
 # X11 apps
 xrdb -merge ~/.Xresources
@@ -56,24 +54,27 @@ wl-paste -t text --watch clipman store &
 wlsunset -l 12.9 -L 77.5 &
 
 # idle handler 
-# exec swayidle -w \
-#        timeout 180 'playerctl -a pause && swaylock -f' \
-#        timeout 185 'swaymsg "output * dpms off"' \
-#        resume 'swaymsg "output * dpms on"' \
-#        before-sleep 'swaylock -f'
+exec swayidle -w \
+       timeout 180 'playerctl -a pause && swaylock -f' \
+       timeout 185 'swaymsg "output * dpms off"' \
+       resume 'swaymsg "output * dpms on"' \
+       before-sleep 'swaylock -f' &
 
 # laptop mode handles sleep resume
 # dpms off and resume failure
-swayidle -w \
-       timeout 180 'playerctl -a pause && swaylock -f' \
-       before-sleep 'swaylock -f' &
+# swayidle -w \
+#        timeout 180 'playerctl -a pause && swaylock -f' \
+#        before-sleep 'swaylock -f' &
+
+# status bar
+waybar
 
 # portal
-/usr/libexec/xdg-desktop-portal
+/usr/libexec/xdg-desktop-portal &
 
 # flatpak compat
-/usr/libexec/xdg-desktop-portal-gtk
-/usr/libexec/xdg-desktop-portal-wlr
-/usr/libexec/xdg-desktop-portal-gnome
-  
+/usr/libexec/xdg-desktop-portal-gtk &
+/usr/libexec/xdg-desktop-portal-wlr &
+/usr/libexec/xdg-desktop-portal-gnome &
+
 echo "$(date)<<"
