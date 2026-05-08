@@ -452,39 +452,26 @@ require('lazy').setup({
   cmd = { "ToggleTerm", "TermExec" },
   config = function()
     require("toggleterm").setup({
-      open_mapping = [[<C-t>]],
+      open_mapping = false,  -- Disable default mapping to avoid conflict
       start_in_insert = true,
       insert_mappings = true,
       terminal_mappings = true,
       persist_size = true,
       close_on_exit = true,
       shade_terminals = true,
-      direction = "float",
-      float_opts = {
-        border = "rounded",
-      },
-
+      direction = "vertical",
+      size = 80,
     })
 
     local Terminal = require("toggleterm.terminal").Terminal
 
     package.loaded["user.toggleterm"] = {
-      float_term = Terminal:new({ direction = "float", hidden = true }),
       right_term = Terminal:new({ direction = "vertical", size = 80, hidden = true }),
     }
   end,
 
   -- FIXME: overriding keymaps
   keys = {
-    -- Floating terminal
-    {
-      "<leader>tf",
-      function()
-        require("user.toggleterm").float_term:toggle()
-      end,
-      desc = "Toggle Floating Terminal",
-    },
-
     -- Right vertical terminal
     {
       "<leader>tr",
@@ -494,10 +481,25 @@ require('lazy').setup({
       desc = "Toggle Vertical Terminal (Right)",
     },
     {
+      "<C-t>",
+      function()
+        require("user.toggleterm").right_term:toggle()
+      end,
+      desc = "Toggle Vertical Terminal (Ctrl-T)",
+    },
+    {
       "<Esc>",
       [[<C-\><C-n>]],
       mode = "t",
       desc = "Exit Terminal Mode",
+    },
+    {
+      "<C-t>",
+      function()
+        require("user.toggleterm").right_term:toggle()
+      end,
+      mode = "t",
+      desc = "Toggle Terminal (Ctrl-T) from Terminal Mode",
     },
   },
 },
@@ -617,20 +619,9 @@ require('lazy').setup({
 {
   'mfussenegger/nvim-jdtls',
   ft = 'java',
+  dependencies = { "folke/which-key.nvim" },
   config = function()
-    local jdtls = require('jdtls')
-    local root_dir = require('jdtls.setup').find_root({
-      '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle'
-    })
-
-    local keymaps = require("user.keymaps")
-
-    jdtls.start_or_attach({
-      cmd = { 'jdtls' },
-      root_dir = root_dir,
-      on_attach = keymaps.jdtls_on_attach,
-    })
-
+    require('plugins.jdtls').config()
   end,
 },
 

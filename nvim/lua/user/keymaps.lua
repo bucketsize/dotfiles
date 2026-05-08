@@ -73,13 +73,12 @@ function M.setup()
   map('n', '<leader>gM', "<cmd>DiffviewClose<CR>", { desc = 'Diffview: Close' })
 
   -- Terminal
-  map('n', '<leader>tf', function()
-    require("user.toggleterm").float_term:toggle()
-  end, { desc = 'Float term' })
-
   map('n', '<leader>tr', function()
     require("user.toggleterm").right_term:toggle()
-  end, { desc = 'Right term' })
+  end, { desc = 'Toggle Vertical Terminal (Right)' })
+  
+  -- Additional terminal mappings
+  map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
   -- Diagnostics Panel
   map('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<CR>', { desc = 'Diag panel' })
@@ -100,7 +99,6 @@ function M.setup()
   vim.keymap.set('n', '<leader>l', '', { desc = 'LSP' })
   vim.keymap.set('n', '<leader>j', '', { desc = 'Java' })
 end
-
 
 -- =========================================================
 -- LSP On Attach (Generic)
