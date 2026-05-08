@@ -44,6 +44,13 @@ opt.shiftwidth = 3
 opt.softtabstop = 0
 opt.expandtab = true
 
+-- Better cursor line appearance
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    vim.cmd("hi CursorLine cterm=NONE gui=NONE")
+  end,
+})
+
 vim.schedule(function()
   opt.clipboard = 'unnamedplus'
 end)
@@ -125,13 +132,32 @@ require('lazy').setup({
 {
   'folke/tokyonight.nvim',
   priority = 1000,
+  opts = {
+    transparent = false,
+    styles = {
+      comments = { italic = true },
+      keywords = { italic = true },
+      functions = { italic = true },
+    },
+    sidebars = { "qf", "vista_kind", "terminal", "packer" },
+    day_brightness = 0.3,
+    hide_inactive_statusline = false,
+    dim_inactive = false,
+    lualine_bold = true,
+  },
   init = function()
-    vim.cmd.colorscheme 'habamax'
+    vim.cmd.colorscheme 'tokyonight-night'
     vim.cmd.hi 'Comment gui=none'
   end,
 },
 
 { 'HiPhish/rainbow-delimiters.nvim' },
+
+-- Better cursor line and visual indicators
+{
+  'nvim-tree/nvim-web-devicons',
+  opts = {}
+},
 
 {
   "akinsho/bufferline.nvim",
@@ -142,7 +168,7 @@ require('lazy').setup({
       options = {
         mode = "buffers",
         diagnostics = "nvim_lsp",
-        separator_style = "slant",
+        separator_style = "thin",  -- Changed from "slant" to "thin" for cleaner look
         offsets = {
           {
             filetype = "NvimTree",
@@ -158,6 +184,12 @@ require('lazy').setup({
           delay = 200,
           reveal = { "close" },
         },
+        -- Add more visual improvements
+        color_icons = true,
+        indicator = {
+          icon = '▎',
+          style = 'icon',
+        },
       },
     })
   end,
@@ -170,10 +202,16 @@ require('lazy').setup({
     require("lualine").setup({
       options = {
         theme = "auto",
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        component_separators = { left = "|", right = "|" },
+        section_separators = { left = "", right = "" },
         globalstatus = true,
         icons_enabled = true,
+        disabled_filetypes = {
+          statusline = {},
+          winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
       },
       sections = {
         lualine_a = { "mode" },
